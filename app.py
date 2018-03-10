@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 UPLOAD_FOLDER = os.path.basename('/uploads')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
@@ -14,11 +14,6 @@ UPLOAD_COUNT = 0
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-def get_file_extension(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower()
-
 
 @app.route('/')
 def hello_world():
